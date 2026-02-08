@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+firebase-admin
+yt-dlp
+redis
+pydantic
+pydantic-settings
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+httpx

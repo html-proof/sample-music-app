@@ -1,0 +1,67 @@
+{
+    "rules": {
+        "users": {
+            "$uid": {
+                ".read": "$uid === auth.uid",
+                ".write": "$uid === auth.uid",
+                "profile": {
+                    ".validate": "newData.hasChildren(['uid', 'email'])"
+                },
+                "history": {
+                    "$historyId": {
+                        ".validate": "newData.hasChildren(['id', 'title']) && newData.child('id').isString() && newData.child('title').isString()"
+                    }
+                },
+                "state": {
+                    ".validate": "newData.hasChildren(['status'])",
+                    "status": {
+                        ".validate": "newData.isString() && (newData.val() === 'playing' || newData.val() === 'paused' || newData.val() === 'idle')"
+                    },
+                    "currentSong": {
+                        ".validate": "newData.hasChildren(['id', 'title'])"
+                    },
+                    "position": {
+                        ".validate": "newData.isNumber() && newData.val() >= 0"
+                    },
+                    "volume": {
+                        ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+                    }
+                },
+                "queue": {
+                    "$queueIndex": {
+                        ".validate": "newData.hasChildren(['id', 'title']) && newData.child('id').isString()"
+                    }
+                },
+                "preferences": {
+                    ".validate": "newData.hasChildren(['country', 'language'])",
+                    "country": {
+                        ".validate": "newData.isString()"
+                    },
+                    "language": {
+                        ".validate": "newData.isString()"
+                    },
+                    "artists": {
+                        ".validate": "newData.isString()"
+                    },
+                    "modes": {
+                        ".validate": "newData.isString()"
+                    }
+                },
+                "devices": {
+                    "$deviceId": {
+                        ".validate": "newData.hasChildren(['deviceId', 'lastSeen'])",
+                        "deviceId": {
+                            ".validate": "newData.isString()"
+                        },
+                        "lastSeen": {
+                            ".validate": "newData.isNumber()"
+                        },
+                        "isActive": {
+                            ".validate": "newData.isBoolean()"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

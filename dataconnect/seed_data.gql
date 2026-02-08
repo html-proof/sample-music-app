@@ -1,0 +1,120 @@
+mutation SeedDatabase @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") @transaction {
+  user_insertMany(data: [
+    {
+      id: "649912b9-af03-475a-9e53-9a950f2b3b33",
+      displayName: "demouser1",
+      createdAt: "2024-04-02T12:00:00Z",
+      email: "demouser1@example.com",
+      photoUrl: "https://example.com/demouser1.jpg"
+    },
+    {
+      id: "75a423c0-e41a-49b2-b37c-2d3a1a0a3b44",
+      displayName: "demouser2",
+      createdAt: "2024-04-02T13:00:00Z",
+      email: "demouser2@example.com",
+      photoUrl: "https://example.com/demouser2.jpg"
+    }
+  ])
+  artist_insertMany(data: [
+    {
+      id: "86b534d1-5c2b-4a6d-a88e-4b4a4b4b4b55",
+      name: "demoartist1",
+      createdAt: "2024-04-02T14:00:00Z",
+      genre: "Pop",
+      bio: "Example bio for demoartist1"
+    },
+    {
+      id: "97c645e2-6d3c-4bb3-b49f-5c5c5c5c5c66",
+      name: "demoartist2",
+      createdAt: "2024-04-02T15:00:00Z",
+      genre: "Rock",
+      bio: "Example bio for demoartist2"
+    }
+  ])
+  song_insertMany(data: [
+    {
+      id: "a8d756f3-7e4d-4c74-b5a0-6d6d6d6d6d77",
+      artistId: "86b534d1-5c2b-4a6d-a88e-4b4a4b4b4b55",
+      title: "demosong1",
+      createdAt: "2024-04-02T16:00:00Z",
+      album: "demoalbum1",
+      year: 2023,
+      duration: 240
+    },
+    {
+      id: "b9e86704-8f5e-4d85-b6b1-7e7e7e7e7e88",
+      artistId: "97c645e2-6d3c-4bb3-b49f-5c5c5c5c5c66",
+      title: "demosong2",
+      createdAt: "2024-04-02T17:00:00Z",
+      album: "demoalbum2",
+      year: 2024,
+      duration: 300
+    }
+  ])
+  playlist_insertMany(data: [
+    {
+      id: "ca097815-906f-4e96-b7c2-8f8f8f8f8f99",
+      userId: "649912b9-af03-475a-9e53-9a950f2b3b33",
+      name: "demoplaylist1",
+      createdAt: "2024-04-02T18:00:00Z",
+      updatedAt: "2024-04-02T18:00:00Z",
+      description: "Example playlist",
+      public: true
+    },
+    {
+      id: "db1a8926-a170-4f07-b8d3-9a9a9a9a9aa0",
+      userId: "75a423c0-e41a-49b2-b37c-2d3a1a0a3b44",
+      name: "demoplaylist2",
+      createdAt: "2024-04-02T19:00:00Z",
+      updatedAt: "2024-04-02T19:00:00Z",
+      description: "Another example playlist",
+      public: false
+    }
+  ])
+  playlistSong_insertMany(data: [
+    {
+      playlistId: "ca097815-906f-4e96-b7c2-8f8f8f8f8f99",
+      songId: "a8d756f3-7e4d-4c74-b5a0-6d6d6d6d6d77",
+      position: 1
+    },
+    {
+      playlistId: "db1a8926-a170-4f07-b8d3-9a9a9a9a9aa0",
+      songId: "b9e86704-8f5e-4d85-b6b1-7e7e7e7e7e88",
+      position: 1
+    }
+  ])
+  listen_insertMany(data: [
+    {
+      userId: "649912b9-af03-475a-9e53-9a950f2b3b33",
+      songId: "a8d756f3-7e4d-4c74-b5a0-6d6d6d6d6d77",
+      createdAt: "2024-04-02T20:00:00Z",
+      listenDate: "2024-04-02",
+      platform: "Web"
+    },
+    {
+      userId: "75a423c0-e41a-49b2-b37c-2d3a1a0a3b44",
+      songId: "b9e86704-8f5e-4d85-b6b1-7e7e7e7e7e88",
+      createdAt: "2024-04-02T21:00:00Z",
+      listenDate: "2024-04-02",
+      platform: "Mobile"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      userId: "649912b9-af03-475a-9e53-9a950f2b3b33",
+      songId: "a8d756f3-7e4d-4c74-b5a0-6d6d6d6d6d77",
+      createdAt: "2024-04-02T22:00:00Z",
+      rating: 4,
+      updatedAt: "2024-04-02T22:00:00Z",
+      reviewText: "Great song!"
+    },
+    {
+      userId: "75a423c0-e41a-49b2-b37c-2d3a1a0a3b44",
+      songId: "b9e86704-8f5e-4d85-b6b1-7e7e7e7e7e88",
+      createdAt: "2024-04-02T23:00:00Z",
+      rating: 5,
+      updatedAt: "2024-04-02T23:00:00Z",
+      reviewText: "Amazing song!"
+    }
+  ])
+}
