@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     # Firebase
     # Path to serviceAccountKey.json. If None, uses default credentials (mostly for production/GCP)
     FIREBASE_CREDENTIALS_PATH: str | None = None 
+    FIREBASE_CREDENTIALS_BASE64: str = ""  # Base64 encoded service account JSON (for Railway)
     FIREBASE_PROJECT_ID: str | None = None
     FIREBASE_STORAGE_BUCKET: str | None = None
     
