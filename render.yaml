@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: musicapp-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: FIREBASE_CREDENTIALS_BASE64
+        sync: false
+      - key: FIREBASE_PROJECT_ID
+        value: music-app-f2e65
+      - key: DEBUG
+        value: False
+      - key: REDIS_URL
+        sync: false
